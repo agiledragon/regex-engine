@@ -1,0 +1,20 @@
+# temp
+tmp/
+output/
+build/
+Debug/
+
+# mac
+.DS_Store
+
+# python
+*.pyc
+
+# clion
+.idea/
+*.xml
+
+# eclipse
+.settings/
+.project
+.cproject
