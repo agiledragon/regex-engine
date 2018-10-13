@@ -10,6 +10,7 @@ include_directories(
 )
 
 file(GLOB_RECURSE all_files
+	src/*.cpp
     test/*.cpp)
 
 link_directories("$ENV{GTEST_HOME}/lib")
