@@ -6,12 +6,12 @@
 
 struct Val : Pattern
 {
-	Val(const String& s);
+	Val(const std::string& s);
 
 	virtual Strings apply(const Strings& strs) override;
 
 private:
-	String s;
+	std::string s;
 };
 
 

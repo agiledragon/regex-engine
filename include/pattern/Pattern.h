@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 
-typedef std::string String;
 typedef std::vector<std::string> Strings;
 
 struct Pattern

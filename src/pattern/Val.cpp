@@ -1,18 +1,7 @@
 #include "pattern/Val.h"
+#include "pattern/Utils.h"
 
-namespace
-{
-	bool hasPrefix(const String& str, const String& prefix)
-	{
-		for (int i = 0; i < prefix.size(); i++)
-		{
-			if (str[i] != prefix[i]) return false;
-		}
-		return true;
-	}
-}
-
-Val::Val(const String& s) : s(s)
+Val::Val(const std::string& s) : s(s)
 {
 
 }
