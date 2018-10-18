@@ -1,5 +1,4 @@
 #include "pattern/OneOf.h"
-#include "pattern/Utils.h"
 
 OneOf::OneOf(const std::string& s) : s(s)
 {

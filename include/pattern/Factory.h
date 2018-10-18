@@ -7,6 +7,6 @@ struct Pattern;
 
 std::unique_ptr<Pattern> val(const std::string& str);
 std::unique_ptr<Pattern> oneof(const std::string& str);
-
+std::unique_ptr<Pattern> dot();
 
 #endif
