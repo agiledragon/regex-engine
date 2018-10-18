@@ -1,7 +1,7 @@
 #include "Service.h"
 #include "pattern/Pattern.h"
 
-std::string match(std::unique_ptr<Pattern> pattern, const std::string& str)
+std::string match(std::shared_ptr<Pattern> pattern, const std::string& str)
 {
 	Strings strs;
 	strs.push_back(str);

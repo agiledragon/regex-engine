@@ -30,3 +30,15 @@ TEST(match, dot)
 	ASSERT_EQ("c", match(dot(), "c"));
 	ASSERT_EQ("", match(dot(), ""));
 }
+
+TEST(match, seq)
+{
+	ASSERT_EQ("abcdef", match(seq(val("abc"), val("def")), "abcdefg"));
+	ASSERT_EQ("ae", match(seq(oneof("abc"), oneof("def")), "aed"));
+	ASSERT_EQ("ef", match(seq(dot(), dot()), "efg"));
+	ASSERT_EQ("abcf", match(seq(val("abc"), oneof("def")), "abcfg"));
+	ASSERT_EQ("ab", match(seq(oneof("abc"), dot()), "abcde"));
+	ASSERT_EQ("eabc", match(seq(dot(), val("abc")), "eabc"));
+	ASSERT_EQ("de", match(seq(dot(), oneof("def")), "def"));
+	ASSERT_EQ("", match(seq(val("abc"), val("def")), "abcde"));
+}
