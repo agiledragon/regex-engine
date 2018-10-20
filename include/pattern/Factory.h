@@ -10,5 +10,6 @@ std::shared_ptr<Pattern> oneof(const std::string& str);
 std::shared_ptr<Pattern> dot();
 std::shared_ptr<Pattern> seq(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp);
 std::shared_ptr<Pattern> alt(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp);
+std::shared_ptr<Pattern> eol();
 
 #endif
