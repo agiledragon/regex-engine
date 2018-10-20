@@ -3,6 +3,7 @@
 #include "pattern/OneOf.h"
 #include "pattern/Dot.h"
 #include "pattern/Seq.h"
+#include "pattern/Alt.h"
 #include <memory>
 
 std::shared_ptr<Pattern> val(const std::string& str)
@@ -25,3 +26,7 @@ std::shared_ptr<Pattern> seq(const std::shared_ptr<Pattern> lp, const std::share
 	return std::shared_ptr<Pattern>(new Seq(lp, rp));
 }
 
+std::shared_ptr<Pattern> alt(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp)
+{
+	return std::shared_ptr<Pattern>(new Alt(lp, rp));
+}

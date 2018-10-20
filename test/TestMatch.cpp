@@ -42,3 +42,19 @@ TEST(match, seq)
 	ASSERT_EQ("de", match(seq(dot(), oneof("def")), "def"));
 	ASSERT_EQ("", match(seq(val("abc"), val("def")), "abcde"));
 }
+
+TEST(match, alt)
+{
+	ASSERT_EQ("abc", match(alt(val("abc"), val("def")), "abcdefg"));
+	ASSERT_EQ("def", match(alt(val("abc"), val("def")), "defg"));
+	ASSERT_EQ("a", match(alt(oneof("abc"), oneof("def")), "aed"));
+	ASSERT_EQ("e", match(alt(oneof("abc"), oneof("def")), "ed"));
+	ASSERT_EQ("e", match(alt(dot(), dot()), "ef"));
+	ASSERT_EQ("abc", match(alt(val("abc"), oneof("def")), "abcfg"));
+	ASSERT_EQ("f", match(alt(val("abc"), oneof("def")), "fg"));
+	ASSERT_EQ("a", match(alt(oneof("abc"), dot()), "abcde"));
+	ASSERT_EQ("d", match(alt(oneof("abc"), dot()), "de"));
+	ASSERT_EQ("", match(seq(val("abc"), val("def")), "abde"));
+
+}
+
