@@ -11,5 +11,6 @@ std::shared_ptr<Pattern> dot();
 std::shared_ptr<Pattern> seq(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp);
 std::shared_ptr<Pattern> alt(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp);
 std::shared_ptr<Pattern> eol();
+std::shared_ptr<Pattern> star(const std::shared_ptr<Pattern> p);
 
 #endif

@@ -5,6 +5,7 @@
 #include "pattern/Seq.h"
 #include "pattern/Alt.h"
 #include "pattern/Eol.h"
+#include "pattern/Star.h"
 #include <memory>
 
 std::shared_ptr<Pattern> val(const std::string& str)
@@ -35,4 +36,9 @@ std::shared_ptr<Pattern> alt(const std::shared_ptr<Pattern> lp, const std::share
 std::shared_ptr<Pattern> eol()
 {
 	return std::shared_ptr<Pattern>(new Eol());
+}
+
+std::shared_ptr<Pattern> star(const std::shared_ptr<Pattern> p)
+{
+	return std::shared_ptr<Pattern>(new Star(p));
 }

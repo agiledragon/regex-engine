@@ -67,3 +67,12 @@ TEST(match, eol)
 	ASSERT_EQ("", match(seq(dot(), eol()), "ef"));
 }
 
+TEST(match, star)
+{
+	ASSERT_EQ("aaaaaaab", match(seq(star(val("a")), val("ab")), "aaaaaaab"));
+	ASSERT_EQ("ababababcd", match(seq(star(val("ab")), val("cd")), "ababababcde"));
+	ASSERT_EQ("ababababcd", match(seq(star(val("ab")), val("abcd")), "ababababcde"));
+	ASSERT_EQ("aaabaabbbabbabc", match(seq(star(seq(star(val("a")), star(val("b")))), val("abc")), "aaabaabbbabbabcd"));
+	ASSERT_EQ("aaabaabbbabbabc", match(seq(star(seq(star(val("a")), star(val("b")))), val("c")), "aaabaabbbabbabcd"));
+}
+

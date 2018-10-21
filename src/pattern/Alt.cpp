@@ -1,6 +1,6 @@
 #include "pattern/Alt.h"
 
-Alt::Alt(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp) : lp(std::move(lp)), rp(std::move(rp))
+Alt::Alt(const std::shared_ptr<Pattern> lp, const std::shared_ptr<Pattern> rp) : lp(lp), rp(rp)
 {
 
 }
