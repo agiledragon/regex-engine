@@ -3,6 +3,7 @@ tmp/
 output/
 build/
 Debug/
+Default/
 
 # mac
 .DS_Store

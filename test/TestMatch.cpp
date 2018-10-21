@@ -69,10 +69,35 @@ TEST(match, eol)
 
 TEST(match, star)
 {
+	ASSERT_EQ("ab", match(seq(star(val("a")), val("ab")), "ab"));
+	ASSERT_EQ("aab", match(seq(star(val("a")), val("ab")), "aab"));
 	ASSERT_EQ("aaaaaaab", match(seq(star(val("a")), val("ab")), "aaaaaaab"));
+	ASSERT_EQ("cd", match(seq(star(val("ab")), val("cd")), "cde"));
+	ASSERT_EQ("abcd", match(seq(star(val("ab")), val("cd")), "abcde"));
 	ASSERT_EQ("ababababcd", match(seq(star(val("ab")), val("cd")), "ababababcde"));
+	ASSERT_EQ("abcd", match(seq(star(val("ab")), val("abcd")), "abcde"));
+	ASSERT_EQ("ababcd", match(seq(star(val("ab")), val("abcd")), "ababcde"));
 	ASSERT_EQ("ababababcd", match(seq(star(val("ab")), val("abcd")), "ababababcde"));
+	ASSERT_EQ("a", match(star(val("a")), "abc"));
+	ASSERT_EQ("b", match(seq(star(val("a")), val("b")), "bc"));
+	ASSERT_EQ("b", match(seq(star(val("a")), val("b")), "bc"));
+	ASSERT_EQ("ab", match(star(seq(star(val("a")), star(val("b")))), "ab"));
 	ASSERT_EQ("aaabaabbbabbabc", match(seq(star(seq(star(val("a")), star(val("b")))), val("abc")), "aaabaabbbabbabcd"));
 	ASSERT_EQ("aaabaabbbabbabc", match(seq(star(seq(star(val("a")), star(val("b")))), val("c")), "aaabaabbbabbabcd"));
+}
+
+TEST(match, plus)
+{
+	ASSERT_EQ("", match(seq(plus(val("a")), val("ab")), "ab"));
+	ASSERT_EQ("aab", match(seq(plus(val("a")), val("ab")), "aab"));
+	ASSERT_EQ("aaaaaaab", match(seq(plus(val("a")), val("ab")), "aaaaaaab"));
+	ASSERT_EQ("", match(seq(plus(val("ab")), val("cd")), "cde"));
+	ASSERT_EQ("abcd", match(seq(plus(val("ab")), val("cd")), "abcde"));
+	ASSERT_EQ("ababababcd", match(seq(plus(val("ab")), val("cd")), "ababababcde"));
+	ASSERT_EQ("", match(seq(plus(val("ab")), val("abcd")), "abcde"));
+	ASSERT_EQ("ababcd", match(seq(plus(val("ab")), val("abcd")), "ababcde"));
+	ASSERT_EQ("ababababcd", match(seq(plus(val("ab")), val("abcd")), "ababababcde"));
+	ASSERT_EQ("aaabaabbbabbabc", match(seq(plus(seq(plus(val("a")), plus(val("b")))), val("abc")), "aaabaabbbabbabcd"));
+	ASSERT_EQ("aaabaabbbabbabc", match(seq(plus(seq(plus(val("a")), plus(val("b")))), val("c")), "aaabaabbbabbabcd"));
 }
 
