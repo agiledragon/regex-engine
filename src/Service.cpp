@@ -15,3 +15,18 @@ std::string match(std::shared_ptr<Pattern> pattern, const std::string& str)
 	}
 	return str.substr(0, str.size() - retStrs[min].size());
 }
+
+std::string search(std::shared_ptr<Pattern> pattern, const std::string& str)
+{
+	std::string result = "";
+	for (int i = 0; i < str.size(); i++)
+	{
+		std::string substr = str.substr(i);
+		result = match(pattern, substr);
+		if (result != "")
+		{
+			break;
+		}
+	}
+	return result;
+}
