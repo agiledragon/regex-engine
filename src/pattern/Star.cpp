@@ -1,5 +1,4 @@
 #include "pattern/Star.h"
-#include "pattern/Plus.h"
 
 Star::Star(const std::shared_ptr<Pattern> p) : p(p)
 {
