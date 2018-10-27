@@ -6,7 +6,6 @@
 #include "pattern/Alt.h"
 #include "pattern/Eol.h"
 #include "pattern/Star.h"
-#include "pattern/Plus.h"
 #include "pattern/Opt.h"
 #include <memory>
 
@@ -47,7 +46,7 @@ std::shared_ptr<Pattern> star(const std::shared_ptr<Pattern> p)
 
 std::shared_ptr<Pattern> plus(const std::shared_ptr<Pattern> p)
 {
-	return std::shared_ptr<Pattern>(new Plus(p));
+	return seq(p, star(p));
 }
 
 std::shared_ptr<Pattern> opt(const std::shared_ptr<Pattern> p)
