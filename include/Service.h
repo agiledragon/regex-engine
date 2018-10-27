@@ -5,8 +5,8 @@
 
 struct Pattern;
 
-std::string match(std::shared_ptr<Pattern> pattern, const std::string& str);
-std::string search(std::shared_ptr<Pattern> pattern, const std::string& str);
+std::string match(const std::shared_ptr<Pattern> pattern, const std::string& str);
+std::string search(const std::shared_ptr<Pattern> pattern, const std::string& str);
 
 
 

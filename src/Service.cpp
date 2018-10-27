@@ -1,7 +1,7 @@
 #include "Service.h"
 #include "pattern/Pattern.h"
 
-std::string match(std::shared_ptr<Pattern> pattern, const std::string& str)
+std::string match(const std::shared_ptr<Pattern> pattern, const std::string& str)
 {
 	Strings strs;
 	strs.push_back(str);
@@ -16,7 +16,7 @@ std::string match(std::shared_ptr<Pattern> pattern, const std::string& str)
 	return str.substr(0, str.size() - retStrs[min].size());
 }
 
-std::string search(std::shared_ptr<Pattern> pattern, const std::string& str)
+std::string search(const std::shared_ptr<Pattern> pattern, const std::string& str)
 {
 	std::string result = "";
 	for (int i = 0; i < str.size(); i++)
